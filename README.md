@@ -49,7 +49,7 @@ For the Checkmk agent to work, the following firewall setting must be made on th
 
 The following plugins are installed by default: `lvm`, `mk_apt`, `mk_logins`, `smart`
 
-In addition, a custom [script (`checkmk-reboot-status.sh`)](checkmk-reboot-status.sh) is automatically added that monitors whether the host needs to be restarted due to the updates.
+In addition, a custom script ([`checkmk-reboot-status.sh`](checkmk-reboot-status.sh)) is automatically added that monitors whether the host needs to be restarted due to the updates.
 
 ## Another repository that might interest you
 
