@@ -7,6 +7,7 @@ checkmk_packaged_agent="check-mk-agent_2.2.0p11-1_all.deb" # Setup -> Agents -> 
 checkmk_ip_address="X.X.X.X"
 checkmk_site="SITENAME"
 checkmk_username="cmkadmin"
+checkmk_password=""
 checkmk_host_to_be_registered=""
 # ----------------------------------------------------------------------------------------------------
 
@@ -28,9 +29,9 @@ cd ~
 echo
 echo "Registration of the host ($checkmk_host_to_be_registered) in Checkmk ($checkmk_ip_address)..."
 if [ "$use_sudo" = true ]; then
-    sudo cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username
+    sudo cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username --password $checkmk_password
 else
-    cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username
+    cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username --password $checkmk_password
 fi
 
 echo
