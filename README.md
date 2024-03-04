@@ -17,12 +17,13 @@ You must now adjust the following variables in the script:
 ```bash
 use_sudo=false
 checkmk_packaged_agent="check-mk-agent_2.2.0p11-1_all.deb" # Setup -> Agents -> Linux -> Packaged Agents
-checkmk_host="http://X.X.X.X" # It is best if the IP address of Checkmk is entered here
+checkmk_ip_address="X.X.X.X"
 checkmk_site="SITENAME"
 checkmk_username="cmkadmin"
-checkmk_password=""
 checkmk_host_to_be_registered=""
 ```
+
+> Experience has shown that registration works best if you use the IP address from Checkmk.
 
 The script must then be made executable:
 
@@ -35,6 +36,8 @@ Run the script:
 ```bash
 /tmp/checkmk-initial-agent-setup.sh
 ```
+
+Note: For security reasons, you will be asked for the password for Checkmk during the execution of the script.
 
 > After the script has been executed, it is deleted!
 

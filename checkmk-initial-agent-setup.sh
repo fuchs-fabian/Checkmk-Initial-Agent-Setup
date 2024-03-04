@@ -4,10 +4,9 @@
 # You must adjust the following variables
 use_sudo=false
 checkmk_packaged_agent="check-mk-agent_2.2.0p11-1_all.deb" # Setup -> Agents -> Linux -> Packaged Agents
-checkmk_host="http://X.X.X.X" # It is best if the IP address of Checkmk is entered here
+checkmk_ip_address="X.X.X.X"
 checkmk_site="SITENAME"
 checkmk_username="cmkadmin"
-checkmk_password=""
 checkmk_host_to_be_registered=""
 # ----------------------------------------------------------------------------------------------------
 
@@ -16,7 +15,7 @@ set -e	# option in bash scripts that causes the script to terminate immediately 
 echo
 echo "***** Checkmk initial agent setup *****"
 
-url_for_checkmk_agents="$checkmk_host/$checkmk_site/check_mk/agents"
+url_for_checkmk_agents="http://$checkmk_ip_address/$checkmk_site/check_mk/agents"
 
 echo
 echo "Installing Checkmk agent..."
@@ -27,11 +26,11 @@ rm "$checkmk_packaged_agent"
 cd ~
 
 echo
-echo "Registration of the host ($checkmk_host_to_be_registered) in Checkmk ($checkmk_host)..."
+echo "Registration of the host ($checkmk_host_to_be_registered) in Checkmk ($checkmk_ip_address)..."
 if [ "$use_sudo" = true ]; then
-    sudo cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_host --site $checkmk_site --user $checkmk_username --password $checkmk_password
+    sudo cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username
 else
-    cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_host --site $checkmk_site --user $checkmk_username --password $checkmk_password
+    cmk-agent-ctl register --hostname $checkmk_host_to_be_registered --server $checkmk_ip_address --site $checkmk_site --user $checkmk_username
 fi
 
 echo
